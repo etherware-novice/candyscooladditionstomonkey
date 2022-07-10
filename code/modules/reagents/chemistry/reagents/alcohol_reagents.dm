@@ -1164,7 +1164,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		. = 1
 	return ..() || .
 
-/datum/reagent/consumable/ethanol/beuro
+/datum/reagent/consumable/ethanol/bureau
 	name = "Bureaucratic Perfection"
 	description = "Smells of freshly signed and filed papers.."
 	nutriment_factor = 1 * REAGENTS_METABOLISM
@@ -1178,8 +1178,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Bureaucratic Perfection"
 	description = "Smells of freshly signed and filed papers.."
 
-/datum/reagent/consumable/ethanol/beuro/on_mob_life(mob/living/carbon/M)  // this is 100% copy pasted but im new to this
-	if((ishuman(M) && (M.job == "Cargo Technician" || M.job == "Quartermaster" || M.job == "Head of Personnel")) || ismonkey(M))  // heals jobs relating to paperwork :)
+/datum/reagent/consumable/ethanol/bureau/on_mob_life(mob/living/carbon/M)  // this is 100% copy pasted but im new to this
+	if(ishuman(M) && (M.job == "Cargo Technician" || M.job == "Quartermaster" || M.job == "Head of Personnel"))  // heals jobs relating to paperwork :)
 		M.heal_bodypart_damage(1,1)
 		. = 1
 	return ..() || .
