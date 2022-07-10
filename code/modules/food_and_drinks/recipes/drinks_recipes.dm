@@ -473,6 +473,13 @@
 	required_reagents = list(/datum/reagent/consumable/laughter = 1, /datum/reagent/consumable/cream = 1)
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
+/datum/chemical_reaction/drink/beuro
+	name = "Bureaucratic Perfection"
+	id = /datum/reagent/consumable/ethanol/beuro
+	results = list(/datum/reagent/consumable/ethanol/beuro = 3)
+	required_reagents = list(/datum/reagent/consumable/ethanol/gin = 1, /datum/reagent/consumable/ethanol/wine = 1, /datum/reagent/consumable/cream = 1)
+	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
+
 /datum/chemical_reaction/drink/silencer
 	name = "Silencer"
 	id = /datum/reagent/consumable/ethanol/silencer
@@ -933,3 +940,4 @@
 	id = /datum/reagent/consumable/ethanol/beeffizz
 	results = list(/datum/reagent/consumable/ethanol/beeffizz = 10)
 	required_reagents = list(/datum/reagent/consumable/beefbroth = 7, /datum/reagent/consumable/ice = 2, /datum/reagent/consumable/lemonjuice = 1 )
+
