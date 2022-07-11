@@ -267,7 +267,7 @@
 	if(!IS_DOCKED)
 		return
 
-	if((obj_flags & EMAGGED) || ENGINES_STARTED)	//SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LAUNCH IN 10 SECONDS
+	if(ENGINES_STARTED)	//SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LAUNCH IN 10 SECONDS
 		to_chat(user, "<span class='warning'>The shuttle is already launching!</span>")
 		return
 
@@ -277,7 +277,7 @@
 
 	obj_flags |= EMAGGED
 	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 60, "THROW" = 20)//YOUR PUNY SEATBELTS can SAVE YOU NOW, MORTAL
-	var/datum/species/S = new
+	 var/datum/species/S = new
 	for(var/i in 1 to 10)
 		// the shuttle system doesn't know who these people are, but they
 		// must be important, surely
@@ -286,7 +286,7 @@
 		ID.registered_name = S.random_name(pick(MALE, FEMALE))
 		ID.assignment = J.title
 
-		authorized += ID
+		// authorized += ID
 
 	process(SSMACHINES_DT)
 
@@ -294,11 +294,11 @@
 	// Our fake IDs that the emag generated are just there for colour
 	// They're not supposed to be accessible
 
-	for(var/obj/item/card/id/ID in src)
+	/* for(var/obj/item/card/id/ID in src)
 		qdel(ID)
 	if(authorized?.len)
 		authorized.Cut()
-	authorized = null
+	authorized = null */
 
 	. = ..()
 
