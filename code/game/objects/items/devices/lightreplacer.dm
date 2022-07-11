@@ -51,6 +51,8 @@
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
+	works_from_distance = TRUE
+
 	force = 8
 
 	var/max_uses = 20
@@ -64,6 +66,15 @@
 	var/bulb_shards = 0
 	// when we get this many shards, we get a free bulb.
 	var/shards_required = 4
+
+
+/obj/item/lightreplacer/afterattack(obj/item/itemtarget, mob/living/user)
+	if(works_from_distance)
+		user.Beam(itemtarget, icon_state = "rped_upgrade", time = 5)
+		/obj/item/storage/part_replacer/proc/play_rped_sound()
+		return
+	return ..()
+
 
 /obj/item/lightreplacer/examine(mob/user)
 	. = ..()
