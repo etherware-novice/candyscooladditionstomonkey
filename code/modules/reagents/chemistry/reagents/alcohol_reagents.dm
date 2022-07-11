@@ -1181,7 +1181,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/bureau/on_mob_life(mob/living/carbon/M)  // this is 100% copy pasted but im new to this
 	if(ishuman(M) && (M.job == "Cargo Technician" || M.job == "Quartermaster" || M.job == "Head of Personnel"))  // heals jobs relating to paperwork :)
 		M.heal_bodypart_damage(1,1)
-		. = 1
+		. = TRUE
 	return ..() || .
 
 /datum/reagent/consumable/ethanol/silencer
