@@ -44,6 +44,12 @@
 	icon_state = "mailman"
 	desc = "<i>'Right-on-time'</i> mail service head wear."
 
+/obj/item/clothing/head/cowboydiscount
+	name = "cowboy hat(?)"
+	icon_state = "cowboydiscount"
+	desc = "Its an old cowboy hat still in circulation. The quality of it seems...questionable."
+	flags_inv = HIDEHAIR | HIDEEARS
+
 /obj/item/clothing/head/plaguedoctorhat
 	name = "plague doctor's hat"
 	desc = "These were once used by plague doctors. They're pretty much useless."
