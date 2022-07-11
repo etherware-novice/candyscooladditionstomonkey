@@ -51,7 +51,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-	works_from_distance = TRUE
 
 	force = 8
 
@@ -68,11 +67,15 @@
 	var/shards_required = 4
 
 
+
+
+//monkestation edit  (using brped)
 /obj/item/lightreplacer/afterattack(obj/item/itemtarget, mob/living/user)
-	if(works_from_distance)
+	if(istype(itemtarget, /obj/item/storage))
 		user.Beam(itemtarget, icon_state = "rped_upgrade", time = 5)
-		/obj/item/storage/part_replacer/proc/play_rped_sound()
-		return
+		playsound(src, 'sound/items/pshoom.ogg', 40, 1)
+		/obj/item/lightreplacer/attackby(itemtarget, user, src)
+
 	return ..()
 
 
@@ -125,6 +128,9 @@
 		var/obj/item/storage/S = W
 		var/found_lightbulbs = FALSE
 		var/replaced_something = TRUE
+
+
+
 
 		for(var/obj/item/I in S.contents)
 			if(istype(I, /obj/item/light))
