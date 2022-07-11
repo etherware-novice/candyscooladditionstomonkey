@@ -176,14 +176,15 @@
 		return .
 
 	if (obj_flags & EMAGGED)
-		var/CUTTIME = rand(0.2, 0.6)
-		var/NEWTIME = floor(max(TIME_LEFT * CUTTIME))  // makes sure the new time wont interrupt ignite
-		minor_announce("The launch timer was not found, using system clock (debug: curtime is [TIME_LEFT], cuttime is [CUTTIME]), newtime is [NEWTIME]", "SYSTEM ERROR:")
+		var/CUTTIME = rand(2, 6)
+		var/NEWTIME = max(TIME_LEFT / CUTTIME)
+		NEWTIME = FLOOR(NEWTIME, 1)  // makes sure the new time wont interrupt ignite
+		minor_announce("The launch timer not be found, using system clock (debug: curtime is [TIME_LEFT], cuttime is [CUTTIME]), newtime is [NEWTIME]", "SYSTEM ERROR:")
 		SSshuttle.emergency.setTimer(NEWTIME)
 
 
 	// Check to see if we've reached criteria for early launch
-	if((authorized.len >= auth_need) || (obj_flags & EMAGGED))
+	if(authorized.len >= auth_need)
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
 		var/system_error = obj_flags & EMAGGED ? "SYSTEM ERROR:" : null
