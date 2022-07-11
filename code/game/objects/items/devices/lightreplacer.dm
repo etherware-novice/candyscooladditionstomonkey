@@ -74,7 +74,7 @@
 	if(istype(itemtarget, /obj/machinery/light))
 		user.Beam(itemtarget, icon_state = "rped_upgrade", time = 5)
 		playsound(src, 'sound/items/pshoom.ogg', 40, 1)
-		afterattack(itemtarget, user, 1)
+		attack_self(itemtarget)
 
 	return ..()
 
@@ -255,7 +255,6 @@
 	if(!isturf(T))
 		return
 
-	to_chat(U, "[T] ([T.type]) - [U] ([U.type]) - [proximity]")
 	var/used = FALSE
 	for(var/atom/A in T)
 		if(!CanUse(U))
