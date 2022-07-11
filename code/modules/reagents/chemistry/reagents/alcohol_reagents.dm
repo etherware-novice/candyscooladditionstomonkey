@@ -2262,8 +2262,37 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 	..()
 
+
+
 /datum/reagent/consumable/ethanol/plasmaflood/on_mob_end_metabolize(mob/living/L)
 	to_chat(L, "<span class='warning'>You no longer feel immune to burning!</span>")
+	. = ..()
+
+/datum/reagent/consumable/ethanol/beeburst
+	name = "Bee Burst"
+	glass_name = "Bee Burst"
+	description = "Its un-bee-lievable how much honey is in here! (A small warning on the bottom warns of bees appearing)"
+	glass_desc = "Its un-bee-lievable how much honey is in here! (A small warning on the bottom warns of bees appearing)"
+	color = "#f0eb89"  // rgb: 240, 235, 137
+	boozepwr = 70
+	quality = DRINK_NICE
+	taste_description = "a bee hive"
+	glass_icon_state = "beeburst"
+	//glass_icon_state = "plasmaflood"
+
+/datum/reagent/consumable/ethanol/beeburst/on_mob_metabolize(mob/living/L)
+	to_chat(L, "<span class='notice'>You feel fluttering in your stomach..</span>")
+	. = ..()
+
+/datum/reagent/consumable/ethanol/beeburst/on_mob_life(mob/living/carbon/M)
+	if(prob(40))  // add delay between spawns? 
+		M.vomit()
+		new /mob/living/simple_animal/hostile/poison/bees(M.loc)  // maybe someone in the future will make the bees more peaceful
+		to_chat(M, "<span class='warning'>You puke up a bee!</span>")
+	..()
+
+/datum/reagent/consumable/ethanol/beeburst/on_mob_end_metabolize(mob/living/M)
+	to_chat(M, "<span class='notice'>The fluttering in your stomach slows, before falling silent.</span>")
 	. = ..()
 
 /datum/reagent/consumable/ethanol/fourthwall
