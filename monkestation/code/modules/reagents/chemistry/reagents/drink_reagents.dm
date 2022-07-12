@@ -119,16 +119,18 @@
 	boozepwr = 20
 	quality = DRINK_NICE
 	taste_description = "a bee hive"
+	glass_icon_file = 'monkestation/icons/obj/drinks.dmi'
 	glass_icon_state = "bee_burst"
+	var/beelimit
 
 /datum/reagent/consumable/ethanol/bee_burst/on_mob_metabolize(mob/living/consumers)
 	to_chat(consumers, "<span class='notice'>You feel fluttering in your stomach..</span>")
-	src.beelimit = world.time
+	beelimit = world.time
 	. = ..()
 
 /datum/reagent/consumable/ethanol/bee_burst/on_mob_life(mob/living/carbon/consumers)
 
-	if(prob(30) && (src.beelimit + 10 < world.time))
+	if(prob(30) && (src.beelimit + 20 < world.time))
 		consumers.vomit()
 		new /mob/living/simple_animal/hostile/poison/bees/friendly(consumers.loc)
 		to_chat(consumers, "<span class='warning'>You puke up a bee!</span>")
