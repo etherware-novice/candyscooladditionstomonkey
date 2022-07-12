@@ -1164,23 +1164,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		. = 1
 	return ..() || .
 
-/datum/reagent/consumable/ethanol/bureau
-	name = "Bureaucratic Perfection"
-	description = "Smells of freshly signed and filed papers.."
-	nutriment_factor = 1 * REAGENTS_METABOLISM
-	color = "#806029" // rgb: 128, 86, 41 (what is this used for?)
-	boozepwr = 20
-	quality = DRINK_GOOD
-	taste_description = "pure organization"
-	glass_icon_state = "bureauglass"
-	glass_name = "Bureaucratic Perfection"
-	glass_desc = "Smells of freshly signed and filed papers.."
-
-/datum/reagent/consumable/ethanol/bureau/on_mob_life(mob/living/carbon/M)  // this is 100% copy pasted but im new to this
-	if(ishuman(M) && (M.job == "Cargo Technician" || M.job == "Quartermaster" || M.job == "Head of Personnel"))  // heals jobs relating to paperwork :)
-		M.heal_bodypart_damage(1,1)
-		. = TRUE
-	return ..() || .
 
 /datum/reagent/consumable/ethanol/silencer
 	name = "Silencer"
