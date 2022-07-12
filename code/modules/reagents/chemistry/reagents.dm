@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/glass_desc = "You can't really tell what this is."
 	var/glass_icon_state = null // Otherwise just sets the icon to a normal glass with the mixture of the reagents in the glass.
 	var/shot_glass_icon_state = null
+	var/glass_icon_file = "icons/obj/drinks.dmi" // monkeystation addition
 	var/datum/reagents/holder = null
 	var/reagent_state = LIQUID
 	var/list/data

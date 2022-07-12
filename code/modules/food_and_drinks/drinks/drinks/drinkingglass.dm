@@ -23,6 +23,8 @@
 	if(reagents.reagent_list.len)
 		var/datum/reagent/R = reagents.get_master_reagent()
 		if(!renamedByPlayer)
+			if(R.glass_icon_file)  // incase glass_icon_file is nulled
+				icon = R.glass_icon_file
 			name = R.glass_name
 			desc = R.glass_desc
 		if(R.glass_icon_state)

@@ -114,7 +114,7 @@
 /datum/reagent/consumable/ethanol/bureau
 	name = "Bureaucratic Perfection"
 	description = "Smells of freshly signed and filed papers.."
-	icons = "monkestation/icons/obj/drinks.dmi"  // created drinks.dmi
+	glass_icon_file = 'monkestation/icons/obj/drinks.dmi'  // created drinks.dmi
 	nutriment_factor = 1 * REAGENTS_METABOLISM  // should be inherited?
 	color = "#806029" // rgb: 128, 86, 41 (what is this used for?)
 	boozepwr = 20
