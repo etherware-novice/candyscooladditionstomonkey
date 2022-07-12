@@ -89,7 +89,7 @@
 		            /obj/item/clothing/accessory/waistcoat = 1,
 					/obj/item/clothing/head/that = 1,
 		            /obj/item/clothing/head/fedora = 1,
-					/obj/item/clothing/head/cowboydiscount = 3,  // for low budget "town aint big enough" scenes!
+					/obj/item/clothing/head/cowboy_discount = 5,  // for low budget "town aint big enough" scenes! (monkeystation edits)
 		            /obj/item/clothing/glasses/monocle = 1,
 		            /obj/item/clothing/head/sombrero = 1,
 		            /obj/item/clothing/suit/poncho = 1,
