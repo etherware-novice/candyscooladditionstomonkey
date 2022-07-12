@@ -30,8 +30,11 @@
 	var/hijack_completion_flight_time_set = 10 SECONDS	//How long in deciseconds to set shuttle's timer after hijack is done.
 	var/hijack_hacking = FALSE
 	var/hijack_announce = TRUE
-	var/emaglast  // measures the last world time the emag event triggered
-	var/emagcooldown = 20  // the actual time until emag again
+
+	// measures the last world time the emag event triggered
+	var/emaglast
+	// the actual time until emag again
+	var/emagcooldown = 20
 
 /obj/machinery/computer/emergency_shuttle/examine(mob/user)
 	. = ..()
@@ -180,17 +183,15 @@
 
 	// monkestation addition
 	if(obj_flags & EMAGGED && (!emaglast || emagcooldown + emaglast < world.time) && prob(50))
-		var/OLDTIME = TIME_LEFT  // for admin logs
-		var/CUTTIME = rand(1, 5)
-		CUTTIME = 2 / CUTTIME
+		var/cut_time = 2 / rand(1, 5)
 
-		if (CUTTIME * TIME_LEFT <= 11)
+		if (cut_time * TIME_LEFT <= 11)
 			SSshuttle.emergency.setTimer(ENGINES_START_TIME)  // to make it align with igniting
 		else
-			SSshuttle.emergency.modTimer(CUTTIME)
-			if (CUTTIME > 1)  // providing launch updates if it changes (doesnt roll a 2)
+			SSshuttle.emergency.modTimer(cut_time)
+			if (cut_time > 1)  // providing launch updates if it changes (doesnt roll a 2)
 				minor_announce("Launch timer corrupted, restarting timer at earlier point..", "SYSTEM ERROR:")
-			else if (CUTTIME < 1)
+			else if (cut_time < 1)
 				minor_announce("Launch timer corrupted, fast forwarding..", "SYSTEM ERROR:")
 
 			emaglast = world.time
@@ -291,29 +292,9 @@
 
 	obj_flags |= EMAGGED
 	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 60, "THROW" = 20) //YOUR PUNY SEATBELTS can SAVE YOU NOW, MORTAL
-/*	var/datum/species/S = new
-	for(var/i in 1 to 10)
-		// the shuttle system doesn't know who these people are, but they
-		// must be important, surely
-		var/obj/item/card/id/ID = new(src)
-		var/datum/job/J = pick(SSjob.occupations)
-		ID.registered_name = S.random_name(pick(MALE, FEMALE))
-		ID.assignment = J.title
-
-		// authorized += ID
-*/
 	process(SSMACHINES_DT)
 
 /obj/machinery/computer/emergency_shuttle/Destroy()
-	// Our fake IDs that the emag generated are just there for colour
-	// They're not supposed to be accessible
-/*
-	for(var/obj/item/card/id/ID in src)
-		qdel(ID)
-	if(authorized?.len)
-		authorized.Cut()
-	authorized = null
-*/
 	. = ..()
 
 /obj/docking_port/mobile/emergency
