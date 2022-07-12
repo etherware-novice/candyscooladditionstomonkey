@@ -2268,35 +2268,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	to_chat(L, "<span class='warning'>You no longer feel immune to burning!</span>")
 	. = ..()
 
-/datum/reagent/consumable/ethanol/beeburst
-	name = "Bee Burst"
-	glass_name = "Bee Burst"
-	description = "Its un-bee-lievable how much honey is in here! (A small warning on the bottom warns of bees appearing)."
-	glass_desc = "Its un-bee-lievable how much honey is in here! (A small warning on the bottom warns of bees appearing)."
-	color = "#f0eb89"  // rgb: 240, 235, 137
-	boozepwr = 50
-	quality = DRINK_NICE
-	taste_description = "a bee hive"
-	glass_icon_state = "beeburst"
-
-/datum/reagent/consumable/ethanol/beeburst/on_mob_metabolize(mob/living/consumers)
-	to_chat(consumers, "<span class='notice'>You feel fluttering in your stomach..</span>")
-	. = ..()
-
-/datum/reagent/consumable/ethanol/beeburst/on_mob_life(mob/living/carbon/consumers)
-	beelimit = 0
-	if(prob(30) && beelimit < 1)  // add delay between spawns? 
-		consumers.vomit()
-		new /mob/living/simple_animal/hostile/poison/bees(consumers.loc)  // maybe someone in the future will make the bees more peaceful
-		to_chat(consumers, "<span class='warning'>You puke up a bee!</span>")
-		beelimit = 30
-
-	beelimit -= 1
-	..()
-
-/datum/reagent/consumable/ethanol/beeburst/on_mob_end_metabolize(mob/living/M)
-	to_chat(M, "<span class='notice'>The fluttering in your stomach slows, before falling silent.</span>")
-	. = ..()
 
 /datum/reagent/consumable/ethanol/fourthwall
 	name = "Fourth Wall"

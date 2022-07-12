@@ -108,3 +108,34 @@
 		H.dna.features["mcolor"] = "fff"
 	H.regenerate_icons()
 	H.grant_language(/datum/language/sippins, TRUE, TRUE, "spray")
+
+
+/datum/reagent/consumable/ethanol/bee_burst
+	name = "Bee Burst"
+	glass_name = "Bee Burst"
+	description = "Its un-bee-lievable how much honey is in here! (A small warning label warns about bee attraction)."
+	glass_desc = "Its un-bee-lievable how much honey is in here! (A small warning label warns about bee attraction)."
+	color = "#f0eb89"  // rgb: 240, 235, 137
+	boozepwr = 20
+	quality = DRINK_NICE
+	taste_description = "a bee hive"
+	glass_icon_state = "bee_burst"
+
+/datum/reagent/consumable/ethanol/bee_burst/on_mob_metabolize(mob/living/consumers)
+	to_chat(consumers, "<span class='notice'>You feel fluttering in your stomach..</span>")
+	src.beelimit = world.time
+	. = ..()
+
+/datum/reagent/consumable/ethanol/bee_burst/on_mob_life(mob/living/carbon/consumers)
+
+	if(prob(30) && (src.beelimit + 10 < world.time))
+		consumers.vomit()
+		new /mob/living/simple_animal/hostile/poison/bees/friendly(consumers.loc)
+		to_chat(consumers, "<span class='warning'>You puke up a bee!</span>")
+		src.beelimit = world.time
+
+	..()
+
+/datum/reagent/consumable/ethanol/bee_burst/on_mob_end_metabolize(mob/living/M)
+	to_chat(M, "<span class='notice'>The fluttering in your stomach slows, before falling silent.</span>")
+	. = ..()

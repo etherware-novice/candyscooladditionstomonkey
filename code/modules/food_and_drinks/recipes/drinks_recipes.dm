@@ -893,12 +893,6 @@
 	results = list(/datum/reagent/consumable/ethanol/plasmaflood = 4)
 	required_reagents = list(/datum/reagent/toxin/plasma = 1, /datum/reagent/napalm = 1, /datum/reagent/consumable/ethanol/tequila = 1, /datum/reagent/consumable/ethanol/demonsblood = 1)
 
-/datum/chemical_reaction/drink/beeburst
-	name = "Bee Burst"
-	id = /datum/reagent/consumable/ethanol/beeburst
-	results = list(/datum/reagent/consumable/ethanol/beeburst = 4)
-	required_reagents = list(/datum/reagent/consumable/ethanol/beesknees = 3, /datum/reagent/consumable/ethanol/sugar_rush = 1)
-
 /datum/chemical_reaction/drink/fourthwall
 	name = "Fourth Wall"
 	id = /datum/reagent/consumable/ethanol/fourthwall
