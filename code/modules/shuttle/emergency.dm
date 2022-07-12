@@ -30,6 +30,8 @@
 	var/hijack_completion_flight_time_set = 10 SECONDS	//How long in deciseconds to set shuttle's timer after hijack is done.
 	var/hijack_hacking = FALSE
 	var/hijack_announce = TRUE
+	var/emaglast  // measures the last world time the emag event triggered
+	var/emagcooldown = 20  // the actual time until emag again
 
 /obj/machinery/computer/emergency_shuttle/examine(mob/user)
 	. = ..()
@@ -175,11 +177,21 @@
 	if(ENGINES_STARTED || (!IS_DOCKED))
 		return .
 
-	if (obj_flags & EMAGGED)
-		var/OLDTIME = TIME_LEFT
-		var/CUTTIME = rand(2, 3)
-		SSshuttle.emergency.modTimer(1 / CUTTIME)
-		minor_announce("The launch timer not be found, using system clock (debug: curtime is [TIME_LEFT], cuttime is [CUTTIME], original was [OLDTIME])", "SYSTEM ERROR:")
+	if (obj_flags & EMAGGED && (!emaglast || emagcooldown + emaglast < world.time) && prob(50))
+		var/OLDTIME = TIME_LEFT  // for admin logs
+		var/CUTTIME = rand(1, 5)
+		CUTTIME = 2 / CUTTIME
+
+		if (CUTTIME * TIME_LEFT <= 11)
+			SSshuttle.emergency.setTimer(ENGINES_START_TIME)  // to make it align with igniting
+		else
+			SSshuttle.emergency.modTimer(CUTTIME)
+			if (CUTTIME > 1)  // providing launch updates if it changes (doesnt roll a 2)
+				minor_announce("Launch timer corrupted, restarting timer at earlier point..", "SYSTEM ERROR:")
+			elif(CUTTIME < 1)
+				minor_announce("Launch timer corrupted, fast forwarding..", "SYSTEM ERROR:")
+
+			emaglast = world.time
 
 
 
