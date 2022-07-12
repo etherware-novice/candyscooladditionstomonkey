@@ -113,6 +113,15 @@
 	user.update_inv_head() //Regenerate the wearer's head appearance so that they have real-time hat updates.
 
 
+/obj/item/clothing/head/cowboy_discount
+	name = "cowboy hat"
+	icon = 'monkestation/icons/obj/clothing/hats.dmi'
+	worn_icon = 'monkestation/icons/mob/head.dmi'
+	icon_state = "cowboy_discount"
+	desc = "Its an old cowboy hat still in circulation. The quality of it seems...questionable."
+	flags_inv = HIDEHAIR | HIDEEARS
+
+
 #undef HAT_CAP
 #undef ADD_HAT
 #undef REMOVE_HAT
