@@ -51,7 +51,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-
 	force = 8
 
 	var/max_uses = 20
@@ -65,9 +64,6 @@
 	var/bulb_shards = 0
 	// when we get this many shards, we get a free bulb.
 	var/shards_required = 4
-
-
-
 
 //monkestation edit  (using brped)
 /obj/item/lightreplacer/afterattack(obj/item/itemtarget, mob/living/user)
@@ -84,8 +80,6 @@
 	. += status_string()
 
 /obj/item/lightreplacer/attackby(obj/item/W, mob/user, params)
-
-	to_chat(user, "[W] (type [W.type]) [W.name]")
 	if(istype(W, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = W
 		if(uses >= max_uses)
@@ -129,8 +123,6 @@
 		var/obj/item/storage/S = W
 		var/found_lightbulbs = FALSE
 		var/replaced_something = TRUE
-
-
 
 
 		for(var/obj/item/I in S.contents)
