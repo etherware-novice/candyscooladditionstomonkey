@@ -176,11 +176,11 @@
 		return .
 
 	if (obj_flags & EMAGGED)
-		var/CUTTIME = rand(2, 6)
-		var/NEWTIME = max(TIME_LEFT / CUTTIME)
-		NEWTIME = FLOOR(NEWTIME, 1)  // makes sure the new time wont interrupt ignite
-		minor_announce("The launch timer not be found, using system clock (debug: curtime is [TIME_LEFT], cuttime is [CUTTIME]), newtime is [NEWTIME]", "SYSTEM ERROR:")
-		SSshuttle.emergency.setTimer(NEWTIME)
+		var/OLDTIME = TIME_LEFT
+		var/CUTTIME = rand(2, 3)
+		SSshuttle.emergency.modTimer(1 / CUTTIME)
+		minor_announce("The launch timer not be found, using system clock (debug: curtime is [TIME_LEFT], cuttime is [CUTTIME], original was [OLDTIME])", "SYSTEM ERROR:")
+
 
 
 	// Check to see if we've reached criteria for early launch
@@ -276,8 +276,8 @@
 	log_game("[key_name(user)] has emagged the emergency shuttle in [COORD(src)] [time] seconds before launch.")
 
 	obj_flags |= EMAGGED
-	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 60, "THROW" = 20)//YOUR PUNY SEATBELTS can SAVE YOU NOW, MORTAL
-	 var/datum/species/S = new
+	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 60, "THROW" = 20) //YOUR PUNY SEATBELTS can SAVE YOU NOW, MORTAL
+/*	var/datum/species/S = new
 	for(var/i in 1 to 10)
 		// the shuttle system doesn't know who these people are, but they
 		// must be important, surely
@@ -287,19 +287,19 @@
 		ID.assignment = J.title
 
 		// authorized += ID
-
+*/
 	process(SSMACHINES_DT)
 
 /obj/machinery/computer/emergency_shuttle/Destroy()
 	// Our fake IDs that the emag generated are just there for colour
 	// They're not supposed to be accessible
-
-	/* for(var/obj/item/card/id/ID in src)
+/*
+	for(var/obj/item/card/id/ID in src)
 		qdel(ID)
 	if(authorized?.len)
 		authorized.Cut()
-	authorized = null */
-
+	authorized = null
+*/
 	. = ..()
 
 /obj/docking_port/mobile/emergency
