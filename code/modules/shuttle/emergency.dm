@@ -177,7 +177,9 @@
 	if(ENGINES_STARTED || (!IS_DOCKED))
 		return .
 
-	if (obj_flags & EMAGGED && (!emaglast || emagcooldown + emaglast < world.time) && prob(50))
+
+	// monkestation addition
+	if(obj_flags & EMAGGED && (!emaglast || emagcooldown + emaglast < world.time) && prob(50))
 		var/OLDTIME = TIME_LEFT  // for admin logs
 		var/CUTTIME = rand(1, 5)
 		CUTTIME = 2 / CUTTIME
@@ -188,7 +190,7 @@
 			SSshuttle.emergency.modTimer(CUTTIME)
 			if (CUTTIME > 1)  // providing launch updates if it changes (doesnt roll a 2)
 				minor_announce("Launch timer corrupted, restarting timer at earlier point..", "SYSTEM ERROR:")
-			elif(CUTTIME < 1)
+			else if (CUTTIME < 1)
 				minor_announce("Launch timer corrupted, fast forwarding..", "SYSTEM ERROR:")
 
 			emaglast = world.time
