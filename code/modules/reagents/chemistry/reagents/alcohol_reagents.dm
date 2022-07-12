@@ -2285,7 +2285,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/beeburst/on_mob_life(mob/living/carbon/consumers)
 	beelimit = 0
-	if(prob(30) && beelimit < 1)  // add delay between spawns? 
+	if(prob(30) && !beelimit)  // add delay between spawns? 
 		consumers.vomit()
 		new /mob/living/simple_animal/hostile/poison/bees(consumers.loc)  // maybe someone in the future will make the bees more peaceful
 		to_chat(consumers, "<span class='warning'>You puke up a bee!</span>")
