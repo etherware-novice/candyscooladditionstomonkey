@@ -3782,6 +3782,7 @@
 #include "monkestation\code\modules\mob\inventory.dm"
 #include "monkestation\code\modules\mob\mob_defines.dm"
 #include "monkestation\code\modules\mob\dead\new_player\sprite_accessories.dm"
+#include "monkestation\code\modules\mob\living\emote.dm"
 #include "monkestation\code\modules\mob\living\inventory.dm"
 #include "monkestation\code\modules\mob\living\carbon\death.dm"
 #include "monkestation\code\modules\mob\living\carbon\human\emote.dm"
