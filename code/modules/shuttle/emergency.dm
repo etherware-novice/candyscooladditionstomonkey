@@ -11,7 +11,7 @@
 #define STAGE_4 4
 #define HIJACKED 5
 // the actual time until emag again
-#define EMAGCOOLDOWN
+#define EMAGCOOLDOWN 20
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
@@ -166,6 +166,21 @@
 /obj/machinery/computer/emergency_shuttle/proc/clear_recent_action(mob/user)
 	acted_recently -= user
 
+/obj/machinery/computer/emergency_shuttle/proc/pick_emag_amount()
+	switch(rand(1, 5))
+		if(1)
+			return 2  // possibility to add time to timer
+		if(2)
+			return 1  // does nothing
+		if(3)
+			return 0.5
+		if(4)
+			return 0.4
+		if(5)
+			return 0.25
+
+
+
 /obj/machinery/computer/emergency_shuttle/process()
 	// Launch check is in process in case auth_need changes for some reason
 	// probably external.
@@ -183,7 +198,7 @@
 
 	// monkestation addition
 	if(obj_flags & EMAGGED && (!emag_last || EMAGCOOLDOWN + emag_last < world.time) && prob(50))
-		var/cut_time = 2 / rand(1, 5)
+		var/cut_time = pick_emag_amount()
 
 		if (cut_time * TIME_LEFT <= 11)
 			SSshuttle.emergency.setTimer(ENGINES_START_TIME)  // to make it align with igniting
@@ -196,8 +211,8 @@
 
 			emag_last = world.time
 
-		message_admins("[ADMIN_LOOKUPFLW(user.client)] has emagged the emergency shuttle, [SSshuttle.emergency.time_left] seconds before launch.")
-		log_game("[key_name(user)] has emagged the emergency shuttle in [COORD(src)] [SSshuttle.emergency.time_left] seconds before launch.")
+		message_admins("Emagged emergency shuttle will launch in [TIME_LEFT] seconds.")
+		log_game("Emagged emergency shuttle will launch in [TIME_LEFT] seconds.")
 
 
 
@@ -289,7 +304,6 @@
 		to_chat(user, "<span class='warning'>The shuttle is already launching!</span>")
 		return
 
-	var/time = TIME_LEFT
 
 
 	obj_flags |= EMAGGED
