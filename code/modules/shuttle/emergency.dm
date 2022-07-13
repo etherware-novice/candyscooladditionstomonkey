@@ -317,7 +317,7 @@
 		ID.registered_name = S.random_name(pick(MALE, FEMALE))
 		ID.assignment = J.title
 
-		// authorized += ID
+		authorized += ID
 
 	process(SSMACHINES_DT)
 
@@ -330,6 +330,8 @@
 	if(authorized?.len)
 		authorized.Cut()
 	authorized = null
+	. = ..()
+
 /obj/docking_port/mobile/emergency
 	name = "emergency shuttle"
 	id = "emergency"
