@@ -144,6 +144,7 @@
 		replacement.access_txt = access_txt
 		replacement.registered_account = registered_account
 		replacement.my_store = my_store
+		user.put_in_hands(replacement)
 		qdel(src)
 
 	if(Adjacent(user))

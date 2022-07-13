@@ -15,4 +15,6 @@
 	replacement.access_txt = access_txt
 	replacement.registered_account = registered_account
 	replacement.my_store = my_store
+	replacement.emagged = 1
+	user.put_in_hands(replacement)
 	qdel(src)
