@@ -121,6 +121,7 @@
 	var/access_txt // mapping aid
 	var/datum/bank_account/registered_account
 	var/obj/machinery/paystand/my_store
+	var/emagged = 0
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
@@ -135,6 +136,16 @@
 	return ..()
 
 /obj/item/card/id/attack_self(mob/user)
+	if(emagged)
+		var/obj/item/card/emag/chip/replacement = new(src.loc)  // is refusing to spawn in the new card, why?
+		replacement.mining_points = mining_points
+		replacement.registered_name = registered_name
+		replacement.assignment = assignment
+		replacement.access_txt = access_txt
+		replacement.registered_account = registered_account
+		replacement.my_store = my_store
+		qdel(src)
+
 	if(Adjacent(user))
 		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", "<span class='notice'>You show \the [src.name].</span>")
 	add_fingerprint(user)
@@ -158,8 +169,7 @@
 		return
 	else if(istype(W, /obj/item/id_emag_chip))
 		qdel(W)
-		// change it into the emag thing
-		// changes the id to have emag traits (monkestation edit)
+		emagged = 1  // changes the id to have emag traits (monkestation edit)
 	else if(istype(W, /obj/item/storage/bag/money))
 		var/obj/item/storage/bag/money/money_bag = W
 		var/list/money_contained = money_bag.contents

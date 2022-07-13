@@ -3694,6 +3694,7 @@
 #include "monkestation\code\game\objects\effects\spawners\engine_spawner.dm"
 #include "monkestation\code\game\objects\effects\spawners\lootdrop.dm"
 #include "monkestation\code\game\objects\items\anime.dm"
+#include "monkestation\code\game\objects\items\cards_ids.dm"
 #include "monkestation\code\game\objects\items\devices\traitordevices.dm"
 #include "monkestation\code\game\objects\items\fluff_papers.dm"
 #include "monkestation\code\game\objects\items\granters.dm"
