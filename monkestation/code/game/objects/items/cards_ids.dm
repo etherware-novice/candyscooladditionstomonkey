@@ -1,5 +1,8 @@
 /obj/item/card/emag/chip
-	desc = "It is an ID card, the magnetic strip is exposed and attached to a small chip. The id's shell is still attached, hanging loosely."
+	name = "identification card"
+	desc = "A card used to provide ID and determine access across the station. A few loose wires hang off the end of it."
+	icon = 'monkestation/icons/obj/card.dmi'
+	icon_state = "emag_hidden"
 	var/mining_points = 0 //For redeeming at mining equipment vendors
 	var/list/access = list()
 	var/registered_name = null // The name registered_name on the card

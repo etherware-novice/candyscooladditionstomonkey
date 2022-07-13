@@ -34,4 +34,4 @@
 	name = "Cryptographic Sequencer Chip"
 	desc = "Thanks to newly developed technology, the cryptographic sequencer can be shrunk into a small chip, turning your existing card into an emag."
 	item = /obj/item/id_emag_chip
-	cost = 12 // less than the 6 for emag and 7 for storage implant
+	cost = 9 // less than the 6 for emag and 7 for storage implant
