@@ -156,6 +156,10 @@
 	else if(istype(W, /obj/item/coin))
 		insert_money(W, user, TRUE)
 		return
+	else if(istype(W, /obj/item/id_emag_chip))
+		qdel(W)
+		// change it into the emag thing
+		// changes the id to have emag traits (monkestation edit)
 	else if(istype(W, /obj/item/storage/bag/money))
 		var/obj/item/storage/bag/money/money_bag = W
 		var/list/money_contained = money_bag.contents

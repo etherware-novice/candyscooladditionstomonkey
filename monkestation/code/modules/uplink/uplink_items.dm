@@ -29,3 +29,9 @@
 			made out of hardlight that the user can use to wreak havoc."
 	item = /obj/item/storage/box/syndie_kit/imp_hard_spear
 	cost = 10
+
+/datum/uplink_item/stealthy_tools/id_emag_chip
+	name = "Cryptographic Sequencer Chip"
+	desc = "Thanks to newly developed technology, the cryptographic sequencer can be shrunk into a small chip, turning your existing card into an emag."
+	item = /obj/item/id_emag_chip
+	cost = 12 // less than the 6 for emag and 7 for storage implant
