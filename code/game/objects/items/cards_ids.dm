@@ -835,11 +835,6 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/job/lawyer
 	icon_state = "lawyer"
 
-/obj/item/card/id/job/assistant
-	name = "identification slip"
-	desc = "A low-budget alternative to the identification cards. The name and job has been hastily scribbled on, and electronics hang off it."
-	icon_state = "assistant"
-
 /obj/item/card/id/pass
 	name = "promotion pass"
 	desc = "A card that, when swiped on your ID card, will grant you all the access. Should not substitute your actual ID card."
