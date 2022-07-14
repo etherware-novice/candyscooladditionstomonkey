@@ -137,19 +137,14 @@
 
 /obj/item/card/id/attack_self(mob/user)
 	if(emagged)
-		var/obj/item/card/emag/chip/replacement = new(src.loc)  // is refusing to spawn in the new card, why?
-		replacement.mining_points = mining_points
-		replacement.registered_name = registered_name
-		replacement.assignment = assignment
-		replacement.access_txt = access_txt
-		replacement.registered_account = registered_account
-		replacement.my_store = my_store
+		var/obj/item/card/emag/chip/replacement = new(src.loc)
+		replacement.id_internal = src
+		src.forceMove(replacement)
 		user.put_in_hands(replacement)
-		qdel(src)
-
-	if(Adjacent(user))
-		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", "<span class='notice'>You show \the [src.name].</span>")
-	add_fingerprint(user)
+	else
+		if(Adjacent(user))
+			user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", "<span class='notice'>You show \the [src.name].</span>")
+		add_fingerprint(user)
 
 /obj/item/card/id/vv_edit_var(var_name, var_value)
 	. = ..()
@@ -170,7 +165,7 @@
 		return
 	else if(istype(W, /obj/item/id_emag_chip))
 		qdel(W)
-		emagged = 1  // changes the id to have emag traits (monkestation edit)
+		emagged = 1
 	else if(istype(W, /obj/item/storage/bag/money))
 		var/obj/item/storage/bag/money/money_bag = W
 		var/list/money_contained = money_bag.contents
