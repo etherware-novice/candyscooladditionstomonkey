@@ -8,3 +8,4 @@
 /obj/item/card/emag/chip/attack_self(mob/user)
 	user.put_in_hands(id_internal)  // qdel(src) prevents this from running if put before
 	qdel(src)
+	to_chat(user, "You silently slip the electronics back into the card, reenabling the id functions.")

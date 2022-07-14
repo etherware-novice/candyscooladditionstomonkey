@@ -141,6 +141,7 @@
 		replacement.id_internal = src
 		src.forceMove(replacement)
 		user.put_in_hands(replacement)
+		to_chat(user, "You take out the chip electronics.")
 	else
 		if(Adjacent(user))
 			user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", "<span class='notice'>You show \the [src.name].</span>")
@@ -165,6 +166,7 @@
 		return
 	else if(istype(W, /obj/item/id_emag_chip))
 		qdel(W)
+		to_chat(user, "You silently slip the chip into your id card.")
 		emagged = 1
 	else if(istype(W, /obj/item/storage/bag/money))
 		var/obj/item/storage/bag/money/money_bag = W
