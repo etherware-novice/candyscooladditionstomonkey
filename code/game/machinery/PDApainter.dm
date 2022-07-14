@@ -44,7 +44,7 @@
 		"Exploration Crew" = "pda-exploration"
 		)
 	var/id_icons = list(
-		"Assistant" = "assistant",
+		"Assistant" = "assistant", //MONKESTATION EDIT - ORIGINAL "Assistant" = "id",
 		"Atmospheric Technician" = "atmos",
 		"Cargo" = "cargo",
 		"Chaplain" = "chap",

@@ -33,7 +33,7 @@ Assistant
 
 /datum/outfit/job/assistant
 	name = "Assistant"
-	id = /obj/item/card/id/job/assistant
+	id = /obj/item/card/id/job/assistant //MONKESTATION ADDITION
 	jobtype = /datum/job/assistant
 	belt = /obj/item/pda/assistant
 
