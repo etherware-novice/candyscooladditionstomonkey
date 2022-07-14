@@ -836,8 +836,8 @@ update_label("John Doe", "Clowny")
 	icon_state = "lawyer"
 
 /obj/item/card/id/job/assistant
-	name = "destroyed identification card"
-	desc = "A card used to provide ID and determine access across the station. This one seems to be nearly destroyed, but through all the scribbles you can make out the name and job."
+	name = "identification slip"
+	desc = "A low-budget alternative to the identification cards. The name and job has been hastily scribbled on, and electronics hang off it."
 	icon_state = "assistant"
 
 /obj/item/card/id/pass
