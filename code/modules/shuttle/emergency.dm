@@ -11,7 +11,13 @@
 #define STAGE_4 4
 #define HIJACKED 5
 // the actual time until emag again
-#define EMAGCOOLDOWN 20
+#define EMAG_COOLDOWN 20
+
+// various possibilities for how much it change
+#define EMAG_DOUBLE 2
+#define EMAG_STAY 1
+#define EMAG_SLIGHT 0.6
+#define EMAG_HEAVY 0.2
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
@@ -166,18 +172,6 @@
 /obj/machinery/computer/emergency_shuttle/proc/clear_recent_action(mob/user)
 	acted_recently -= user
 
-/obj/machinery/computer/emergency_shuttle/proc/pick_emag_amount()
-	switch(rand(1, 5))
-		if(1)
-			return 2  // possibility to add time to timer
-		if(2)
-			return 1  // does nothing
-		if(3)
-			return 0.5
-		if(4)
-			return 0.4
-		if(5)
-			return 0.25
 
 
 
@@ -197,8 +191,8 @@
 
 
 	// monkestation addition
-	if(obj_flags & EMAGGED && (!emag_last || EMAGCOOLDOWN + emag_last < world.time) && prob(50))
-		var/cut_time = pick_emag_amount()
+	if(obj_flags & EMAGGED && (!emag_last || EMAG_COOLDOWN + emag_last < world.time) && prob(50))
+		var/cut_time = pick(EMAG_DOUBLE, EMAG_STAY, EMAG_SLIGHT, EMAG_HEAVY)
 
 		if (cut_time * TIME_LEFT <= 11)
 			SSshuttle.emergency.setTimer(ENGINES_START_TIME)  // to make it align with igniting
@@ -800,4 +794,4 @@
 #undef STAGE_3
 #undef STAGE_4
 #undef HIJACKED
-#undef EMAGCOOLDOWN
+#undef EMAG_COOLDOWN
