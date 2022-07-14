@@ -795,3 +795,7 @@
 #undef STAGE_4
 #undef HIJACKED
 #undef EMAG_COOLDOWN
+#undef EMAG_DOUBLE
+#undef EMAG_STAY
+#undef EMAG_SLIGHT
+#undef EMAG_HEAVY
