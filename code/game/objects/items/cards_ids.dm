@@ -360,7 +360,7 @@ update_label("John Doe", "Clowny")
 	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
 	var/forged = FALSE //have we set a custom name and job assignment, or will we use what we're given when we chameleon change?
 	var/static/list/available_icon_states = list(
-		"id",
+		"assistant",
 		"orange",
 		"serv",
 		"chap",
@@ -834,6 +834,11 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/job/lawyer
 	icon_state = "lawyer"
+
+/obj/item/card/id/job/assistant
+	name = "destroyed identification card"
+	desc = "A card used to provide ID and determine access across the station. This one seems to be nearly destroyed, but through all the scribbles you can make out the name and job."
+	icon_state = "assistant"
 
 /obj/item/card/id/pass
 	name = "promotion pass"

@@ -44,7 +44,7 @@
 		"Exploration Crew" = "pda-exploration"
 		)
 	var/id_icons = list(
-		"Assistant" = "id",
+		"Assistant" = "assistant",
 		"Atmospheric Technician" = "atmos",
 		"Cargo" = "cargo",
 		"Chaplain" = "chap",

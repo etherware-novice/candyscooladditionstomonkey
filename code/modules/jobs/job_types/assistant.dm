@@ -33,6 +33,7 @@ Assistant
 
 /datum/outfit/job/assistant
 	name = "Assistant"
+	id = /obj/item/card/id/job/assistant
 	jobtype = /datum/job/assistant
 	belt = /obj/item/pda/assistant
 
