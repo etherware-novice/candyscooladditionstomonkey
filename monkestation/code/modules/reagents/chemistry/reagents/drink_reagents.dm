@@ -118,7 +118,7 @@
 	nutriment_factor = 1 * REAGENTS_METABOLISM  // should be inherited?
 	color = "#806029" // rgb: 128, 86, 41 (what is this used for?)
 	boozepwr = 20
-	quality = DRINK_GOOD
+	quality = DRINK_BAD
 	taste_description = "pure organization"
 	glass_icon_state = "bureauglass"
 	glass_name = "Bureaucratic Perfection"
