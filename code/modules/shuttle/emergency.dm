@@ -17,8 +17,8 @@
 #define EMAG_DOUBLE 2
 #define EMAG_STAY 1
 #define EMAG_SLIGHT 0.6
-#define EMAG_HEAVY 0.2
-#define EMAG_OHNO 0.1
+#define EMAG_HEAVY 0.35
+#define EMAG_OHNO 0.25
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
@@ -196,6 +196,7 @@
 		var/cut_time = pick(EMAG_DOUBLE, EMAG_STAY, EMAG_SLIGHT, EMAG_HEAVY, EMAG_OHNO)
 
 		if (cut_time * TIME_LEFT <= 11)
+			minor_announce("Launch timer too corrupted, starting shuttle early launch..", "SYSTEM ERROR:")
 			SSshuttle.emergency.setTimer(ENGINES_START_TIME)  // to make it align with igniting
 		else
 			SSshuttle.emergency.modTimer(cut_time)
