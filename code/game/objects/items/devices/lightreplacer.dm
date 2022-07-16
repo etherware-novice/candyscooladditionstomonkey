@@ -65,14 +65,8 @@
 	// when we get this many shards, we get a free bulb.
 	var/shards_required = 4
 
-//monkestation edit  (using brped)
-/obj/item/lightreplacer/afterattack(obj/item/itemtarget, mob/living/user)
-	if(istype(itemtarget, /obj/machinery/light))
-		user.Beam(itemtarget, icon_state = "rped_upgrade", time = 5)
-		playsound(src, 'sound/items/pshoom.ogg', 40, 1)
-		attack_self(itemtarget)
-
-	return ..()
+	// researchable light replacer
+	var/bluespacemode = 0
 
 
 /obj/item/lightreplacer/examine(mob/user)
@@ -243,7 +237,12 @@
 /obj/item/lightreplacer/afterattack(atom/T, mob/U, proximity)
 	. = ..()
 	if(!proximity)
-		return
+		if(bluespacemode)  // monkeedit
+			U.Beam(T, icon_state = "rped_upgrade", time = 5)
+			playsound(src, 'sound/items/pshoom.ogg', 40, 1)
+		else
+			return
+
 	if(!isturf(T))
 		return
 
