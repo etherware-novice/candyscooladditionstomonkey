@@ -11,13 +11,14 @@
 #define STAGE_4 4
 #define HIJACKED 5
 // the actual time until emag again
-#define EMAG_COOLDOWN 20
+#define EMAG_COOLDOWN 15
 
 // various possibilities for how much it change
 #define EMAG_DOUBLE 2
 #define EMAG_STAY 1
 #define EMAG_SLIGHT 0.6
 #define EMAG_HEAVY 0.2
+#define EMAG_OHNO 0.1
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
@@ -191,8 +192,8 @@
 
 
 	// monkestation addition
-	if(obj_flags & EMAGGED && (!emag_last || EMAG_COOLDOWN + emag_last < world.time) && prob(50))
-		var/cut_time = pick(EMAG_DOUBLE, EMAG_STAY, EMAG_SLIGHT, EMAG_HEAVY)
+	if(obj_flags & EMAGGED && (!emag_last || EMAG_COOLDOWN + emag_last < world.time) && prob(40))
+		var/cut_time = pick(EMAG_DOUBLE, EMAG_STAY, EMAG_SLIGHT, EMAG_HEAVY. EMAG_OHNO)
 
 		if (cut_time * TIME_LEFT <= 11)
 			SSshuttle.emergency.setTimer(ENGINES_START_TIME)  // to make it align with igniting
@@ -310,8 +311,6 @@
 		var/datum/job/J = pick(SSjob.occupations)
 		ID.registered_name = S.random_name(pick(MALE, FEMALE))
 		ID.assignment = J.title
-
-		authorized += ID
 
 	process(SSMACHINES_DT)
 
@@ -799,3 +798,4 @@
 #undef EMAG_STAY
 #undef EMAG_SLIGHT
 #undef EMAG_HEAVY
+#undef EMAG_OHNO
