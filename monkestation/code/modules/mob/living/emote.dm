@@ -18,7 +18,7 @@
 	message_simple = "attempts a thumbs down"
 	message_param = "flashes a thumbs down at %t"
 
-/datum/emote/living/whistles
+/datum/emote/living/whistle
 	key="whistle"
 	key_third_person="whistle"
 	message = "whistles a few notes"
