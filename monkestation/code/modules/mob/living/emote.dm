@@ -28,4 +28,4 @@
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/whistle/get_sound(mob/living/user)
-	return pick('sound/instruments/harmonica/Ab2.mid', 'sound/instruments/harmonica/Ab3.mid', 'sound/instruments/harmonica/Ab4.mid', 'sound/instruments/harmonica/Ab5.mid', 'sound/instruments/harmonica/Ab6.mid')
+	return 'sound/items/megaphone.ogg'
