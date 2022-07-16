@@ -11,7 +11,7 @@
 #define STAGE_4 4
 #define HIJACKED 5
 // the actual time until emag again
-#define EMAG_COOLDOWN 15
+#define EMAG_COOLDOWN 1.5 SECONDS
 
 // various possibilities for how much it change
 #define EMAG_DOUBLE 2
