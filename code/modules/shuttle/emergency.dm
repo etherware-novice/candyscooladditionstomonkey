@@ -193,7 +193,7 @@
 
 	// monkestation addition
 	if(obj_flags & EMAGGED && (!emag_last || EMAG_COOLDOWN + emag_last < world.time) && prob(40))
-		var/cut_time = pick(EMAG_DOUBLE, EMAG_STAY, EMAG_SLIGHT, EMAG_HEAVY. EMAG_OHNO)
+		var/cut_time = pick(EMAG_DOUBLE, EMAG_STAY, EMAG_SLIGHT, EMAG_HEAVY, EMAG_OHNO)
 
 		if (cut_time * TIME_LEFT <= 11)
 			SSshuttle.emergency.setTimer(ENGINES_START_TIME)  // to make it align with igniting
