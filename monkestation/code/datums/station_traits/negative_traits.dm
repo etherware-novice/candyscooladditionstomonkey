@@ -1,7 +1,7 @@
 /datum/station_trait/announcement_syndie
 	name = "(REDACTED) announcements"
 	trait_type = STATION_TRAIT_NEGATIVE
-	weight = 300000000000000000000000000
+	weight = 3
 	show_in_report = TRUE
 	report_message = "Traitors have hijacked our announcement system. Be warn- (CONNECTION END.)"
 	blacklist = list(/datum/station_trait/announcement_medbot,
