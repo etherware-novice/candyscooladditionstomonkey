@@ -1,0 +1,2 @@
+Audio files here produced by unix program Espeak (https://github.com/espeak-ng/espeak-ng) under a GPL-3 Licence
+using the greek voice pack
