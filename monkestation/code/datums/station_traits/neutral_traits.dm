@@ -6,7 +6,8 @@
 	report_message = "The Duke himself is your announcer today."
 	blacklist = list(/datum/station_trait/announcement_medbot,
 	/datum/station_trait/announcement_baystation,
-	/datum/station_trait/announcement_intern
+	/datum/station_trait/announcement_intern,
+	/datum/station_trait/announcement_syndie // monke edit
 	)
 
 /datum/station_trait/announcement_duke/New()

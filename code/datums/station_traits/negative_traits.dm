@@ -6,7 +6,8 @@
 	report_message = "Please be nice to him."
 	blacklist = list(/datum/station_trait/announcement_medbot,
 	/datum/station_trait/announcement_baystation,
-	/datum/station_trait/announcement_duke
+	/datum/station_trait/announcement_duke,
+	/datum/station_trait/announcement_syndie // monke edit
 	)
 
 /datum/station_trait/announcement_intern/New()
