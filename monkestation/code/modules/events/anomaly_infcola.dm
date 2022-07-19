@@ -15,7 +15,8 @@
 /obj/item/reagent_containers/food/drinks/soda_cans/inf
 	name = "Space Cola INFINITE"
 	desc = "Cola. Probably not from space. Proceed with caution."
-	icon_state = "cola"
+	icon = 'monkestation/icons/obj/drinks.dmi'
+	icon_state = "inf"
 	list_reagents = list()
 
 /obj/item/reagent_containers/food/drinks/soda_cans/inf/Initialize()
